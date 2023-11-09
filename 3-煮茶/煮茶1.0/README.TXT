@@ -1,0 +1,9 @@
+
+
+¼ÌµçÆ÷  PB5 PB12 PB14 PB15
+
+
+·äÃùÆ÷ PB9
+
+°´¼ü PC13 PC14 PC15 PA0
+

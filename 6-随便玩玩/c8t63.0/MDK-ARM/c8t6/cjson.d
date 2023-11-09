@@ -1,0 +1,9 @@
+c8t6\cjson.o: ..\NET\src\cJSON.c
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\string.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\math.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\float.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\limits.h
+c8t6\cjson.o: D:\software\keil5\ARM\ARMCC\Bin\..\include\ctype.h
+c8t6\cjson.o: ../NET/inc/cJSON.h

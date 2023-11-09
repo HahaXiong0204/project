@@ -1,0 +1,10 @@
+mpu6050\sys.o: ..\SYSTEM\sys\sys.c
+mpu6050\sys.o: ..\SYSTEM\sys\sys.h
+mpu6050\sys.o: D:\software\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h
+mpu6050\sys.o: E:\硬件\接单\workspace\5-合并\mpu6050\MDK-ARM\RTE\RTE_Components.h
+mpu6050\sys.o: ../Drivers/CMSIS/Include/core_cm3.h
+mpu6050\sys.o: D:\software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+mpu6050\sys.o: ../Drivers/CMSIS/Include/cmsis_version.h
+mpu6050\sys.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+mpu6050\sys.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+mpu6050\sys.o: D:\software\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h

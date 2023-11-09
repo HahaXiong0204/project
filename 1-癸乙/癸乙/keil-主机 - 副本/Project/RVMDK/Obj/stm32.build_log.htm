@@ -1,0 +1,92 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.21.1.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=HN0AE-5TV5A-BSDYX-HNVSD-VFY86-BQIQQ
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.21a
+Toolchain Path:  D:\software\Keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 3 (build 300)
+Assembler:       Armasm.exe V5.06 update 3 (build 300)
+Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
+Library Manager: ArmAr.exe V5.06 update 3 (build 300)
+Hex Converter:   FromElf.exe V5.06 update 3 (build 300)
+CPU DLL:         SARMCM3.DLL V5.21a
+Dialog DLL:      DCM.DLL V1.13.8.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.14.0
+ 
+<h2>Project:</h2>
+E:\硬件\workspace_stm\workspace\癸乙\癸乙\keil-主机 - 副本\Project\RVMDK\stm32.uvprojx
+Project File Date:  03/31/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'D:\software\Keil5\ARM\ARMCC\Bin'
+*** Note: Rebuilding project, since 'Options->Output->Create Batch File' is selected.
+Rebuild target 'AlarmClock'
+compiling main.c...
+..\src\STM32App\main.c(240): warning:  #177-D: variable "p" was declared but never referenced
+        long int *p;
+..\src\STM32App\main.c(242): warning:  #177-D: variable "wz" was declared but never referenced
+        int  wz=0;      
+..\src\STM32App\main.c(341): warning:  #223-D: function "delay_ms" declared implicitly
+        delay_ms(1);
+..\src\STM32App\main.c(569): warning:  #223-D: function "delay_init" declared implicitly
+        delay_init();
+..\src\STM32App\main.c(578): warning:  #223-D: function "delay_ms" declared implicitly
+        delay_ms(1000);
+..\src\STM32App\main.c(641): warning:  #174-D: expression has no effect
+              stat == 0;
+..\src\STM32App\main.c(566): warning:  #177-D: variable "temp" was declared but never referenced
+        float temp=0;
+..\src\STM32App\main.c(74): warning:  #177-D: variable "fac_us" was declared but never referenced
+  static u8  fac_us=0;                                                  //us??时倍????                     
+..\src\STM32App\main.c(75): warning:  #177-D: variable "fac_ms" was declared but never referenced
+  static u16 fac_ms=0;                                                  //ms??时倍????,??ucos??,??每?鼋??牡?ms??
+..\src\STM32App\main.c: 9 warnings, 0 errors
+compiling 1602.C...
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_cl.s...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_usart.c...
+compiling esp8266.c...
+compiling MqttKit.c...
+compiling onenet.c...
+compiling delay.c...
+compiling sys.c...
+compiling usart.c...
+linking...
+Program Size: Code=18128 RO-data=504 RW-data=144 ZI-data=2064  
+FromELF: creating hex file...
+".\Obj\stm32.axf" - 0 Error(s), 9 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.3.0.pack
+                ARM::CMSIS:CORE:5.1.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.1.1
+
+<h2>Collection of Component include folders:</h2>
+  E:\硬件\workspace_stm\workspace\癸乙\癸乙\keil-主机 - 副本\Project\RVMDK\RTE
+  D:\software\Keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include
+  D:\software\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.1.1
+Build Time Elapsed:  00:00:06
+</pre>
+</body>
+</html>

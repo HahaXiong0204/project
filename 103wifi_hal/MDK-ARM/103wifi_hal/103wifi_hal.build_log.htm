@@ -1,0 +1,103 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 11, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.28.0.0
+Toolchain Path:  D:\software\MDK5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
+Dialog DLL:      TCM.DLL V1.36.2.0
+ 
+<h2>Project:</h2>
+E:\HAREWARD\½Óµ¥\103wifi_hal\MDK-ARM\103wifi_hal.uvprojx
+Project File Date:  07/07/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\software\MDK5\ARM\ARMCC\Bin'
+Rebuild target '103wifi_hal'
+assembling startup_stm32f103xb.s...
+compiling dma.c...
+compiling stm32f1xx_hal_msp.c...
+compiling gpio.c...
+compiling stm32f1xx_it.c...
+compiling usart.c...
+compiling main.c...
+compiling i2c.c...
+compiling stm32f1xx_hal_gpio_ex.c...
+compiling stm32f1xx_hal.c...
+compiling stm32f1xx_hal_rcc_ex.c...
+compiling stm32f1xx_hal_gpio.c...
+compiling stm32f1xx_hal_dma.c...
+compiling stm32f1xx_hal_rcc.c...
+compiling stm32f1xx_hal_i2c.c...
+compiling stm32f1xx_hal_tim_ex.c...
+compiling stm32f1xx_hal_cortex.c...
+compiling stm32f1xx_hal_flash_ex.c...
+compiling stm32f1xx_hal_exti.c...
+compiling stm32f1xx_hal_tim.c...
+compiling stm32f1xx_hal_flash.c...
+compiling stm32f1xx_hal_pwr.c...
+compiling MqttKit.c...
+compiling cJSON.c...
+..\NET\src\cJSON.c(59): warning:  #1293-D: assignment in condition
+      if (!(copy = (char *)cJSON_malloc(len))) return 0;
+..\NET\src\cJSON.c(368): warning:  #1293-D: assignment in condition
+      while ((token = *ptr) && ++len)
+..\NET\src\cJSON.c(495): warning:  #111-D: statement is unreachable
+      return p.buffer;
+..\NET\src\cJSON.c(633): warning:  #1293-D: assignment in condition
+          if (!(new_item = cJSON_New_Item())) return 0; 	/* memory fail */
+..\NET\src\cJSON.c(783): warning:  #1293-D: assignment in condition
+          if (!(new_item = cJSON_New_Item()))	return 0; /* memory fail */
+..\NET\src\cJSON.c: 5 warnings, 0 errors
+compiling wifi.c...
+compiling system_stm32f1xx.c...
+compiling onenet.c...
+..\NET\src\onenet.c(232): warning:  #177-D: variable "value"  was declared but never referenced
+  	int value;
+..\NET\src\onenet.c: 1 warning, 0 errors
+compiling oled.c...
+compiling stm32f1xx_hal_uart.c...
+linking...
+103wifi_hal\103wifi_hal.axf: error: L6047U: The size of this image (41280 bytes) exceeds the maximum allowed for this version of the linker
+Finished: 0 information, 0 warning, 0 error and 1 fatal error messages.
+"103wifi_hal\103wifi_hal.axf" - 1 Error(s), 6 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.5.1.pack
+                ARM.CMSIS.5.5.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.2.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.0.5.pack
+                Keil.STM32F1xx_DFP.1.0.5
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_103wifi_hal
+  D:\software\MDK5\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include
+  D:\software\MDK5\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.2.0
+Target not created.
+Build Time Elapsed:  00:00:12
+</pre>
+</body>
+</html>

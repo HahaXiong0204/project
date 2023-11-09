@@ -1,0 +1,220 @@
+C51 COMPILER V9.54   MAIN                                                                  05/18/2023 12:21:11 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Obj\main.obj
+COMPILER INVOKED BY: D:\software\Keil5\C51\BIN\C51.EXE User\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\App\24c02;.\App\iic
+                    -;.\App\key;.\App\smg;.\Public;.\App\ds18b20;.\App\ds1302;.\App\ired;.\App\time;.\App\xpt2046;.\App\pwm;.\App\lcd1602) DE
+                    -BUG OBJECTEXTEND PRINT(.\Obj\main.lst) OBJECT(.\Obj\main.obj)
+
+line level    source
+
+   1          /**************************************************************************************
+   2          深圳市普中科技有限公司（PRECHIN 普中）
+   3          技术支持：www.prechin.net
+   4          
+   5          实验名称：LCD1602液晶显示实验
+   6          接线说明：      
+   7          实验现象：下载程序后，LCD1602上显示字符信息
+   8          注意事项：                                                                                                                                                                
+   9          ***************************************************************************************/
+  10          #include "public.h"
+  11          #include "lcd1602.h"
+  12          #include "stdio.h"
+  13          #include "string.h"
+  14          
+  15          #define uint32_t unsigned long
+  16          #define uint16_t unsigned int
+  17          #define uint8_t unsigned char
+  18             
+  19          sbit LED0 = P0^0;
+  20          sbit LED1 = P0^1;
+  21          
+  22          u8 buff1[3] = {0XA5,0x81,0x26};    // 光照
+  23          u8 buff2[3] = {0XA5,0x82,0x27};
+  24          u8 Receive_ok;
+  25          u8 raw_data[15]={0};
+  26          
+  27          
+  28          
+  29          
+  30          void uart_init(u8 baud)
+  31          {
+  32   1              TMOD|=0X20;     //设置计数器工作方式2
+  33   1              SCON=0X50;      //设置为工作方式1
+  34   1              PCON=0X80;      //波特率加倍
+  35   1              TH1=baud;       //计数器初始值设置
+  36   1              TL1=baud;
+  37   1              ES=1;           //打开接收中断
+  38   1              EA=1;           //打开总中断
+  39   1              TR1=1;          //打开计数器            
+  40   1      }
+  41          
+  42          void send_buff(u8 *tem_buff,u8 buff_size)
+  43          {
+  44   1          u8 i;
+  45   1          for(i=0;i<buff_size;i++)
+  46   1          {
+  47   2              SBUF = tem_buff[i];
+  48   2              while(TI==0){};
+  49   2                              TI = 0;
+  50   2          }
+  51   1      }
+  52          
+  53          void main()
+C51 COMPILER V9.54   MAIN                                                                  05/18/2023 12:21:11 PAGE 2   
+
+  54          {       
+  55   1          uint16_t data_16[2]={0};
+  56   1          uint32_t HUM,TE,Lux;
+  57   1          u8 sum=0,i=0;
+  58   1          uart_init(0XFA);//波特率为9600
+  59   1              LCD_Init();//LCD1602初始化
+  60   1      //    
+  61   1      //      LCD_ShowString(2,10,"World!");//第一行显示
+  62   1              
+  63   1          
+  64   1      
+  65   1      //      LCD_ShowString(2,1,"0123456789");//第二行显示
+  66   1              
+  67   1              while(1)
+  68   1              {
+  69   2              send_buff(buff1,3);
+  70   2                      delay_ms(10);
+  71   2                         if(Receive_ok==2)
+  72   2              {
+  73   3      //            send_buff(raw_data,9);
+  74   3                  Lux = (raw_data[4]<<24)|(raw_data[5]<<16)|(raw_data[6]<<8)|raw_data[7];
+  75   3                  LCD_ShowString(2,1,"Lux:");
+  76   3                  LCD_ShowNum(2,5,Lux/100,3);
+  77   3                  LCD_ShowString(2,8,".");
+  78   3                  LCD_ShowNum(2,9,Lux%100,2);
+  79   3      //                                              LCD_ShowString(2,1,".");
+  80   3                                              
+  81   3                  
+  82   3                                                      LED1 = !LED1;
+  83   3                  Receive_ok = 0;
+  84   3              }
+  85   2              delay_ms(500);
+  86   2                                      
+  87   2              send_buff(buff2,3);
+  88   2                                      delay_ms(10);
+  89   2              if(Receive_ok==1)
+  90   2              {
+  91   3                 
+  92   3      //            
+  93   3      //            for(sum=0,i=0;i<(raw_data[3]+4);i++)//rgb_data[3]=3
+  94   3      //                                      sum+=raw_data[i];
+  95   3      //                                      if(sum==raw_data[i])//校验和判断
+  96   3      //                                      {
+  97   3                      HUM = (raw_data[10]<<8)|raw_data[11];
+  98   3                      LCD_ShowString(1,1,"HU:");
+  99   3                      LCD_ShowNum(1,4,HUM/100,2);
+ 100   3                      LCD_ShowString(1,6,".");
+ 101   3                      LCD_ShowNum(1,7,HUM%100,2);
+ 102   3                      TE =(raw_data[4]<<8)|raw_data[5];
+ 103   3                      LCD_ShowString(1,9,"TE:");
+ 104   3                      LCD_ShowNum(1,12,TE/100,2);
+ 105   3                      LCD_ShowString(1,14,".");
+ 106   3                      LCD_ShowNum(1,15,TE%100,2);
+ 107   3      
+ 108   3      //                      }
+ 109   3      //            
+ 110   3                  
+ 111   3                  
+ 112   3                  LED0 = !LED0;
+ 113   3                  Receive_ok = 0;
+ 114   3              }
+ 115   2              delay_ms(500);
+C51 COMPILER V9.54   MAIN                                                                  05/18/2023 12:21:11 PAGE 3   
+
+ 116   2              }       
+ 117   1      }
+ 118          
+ 119          
+ 120          //串口中断
+ 121          void USART_IRQHandler(void)interrupt 4
+ 122          {
+ 123   1              static uint8_t i=0,rebuf[15]={0};
+ 124   1              uint8_t sum=0;
+ 125   1          
+ 126   1          
+ 127   1          
+ 128   1      //    if(RI)                    //清除接收中断标志位
+ 129   1      //      {
+ 130   1      //        rebuf[i++]=SBUF;      //存储接收到的数据
+ 131   1      //                RI = 0;
+ 132   1      ////        send_buff(rebuf,i);
+ 133   1      //        SBUF = rebuf[i-1];
+ 134   1      //        while(!TI);           //等待发送数据完成
+ 135   1      //        TI=0;                 //清除发送完成标志位            
+ 136   1      
+ 137   1      //    }
+ 138   1          
+ 139   1          
+ 140   1              if(RI)//接收完成标志
+ 141   1              {
+ 142   2                      rebuf[i++]=SBUF;
+ 143   2              RI=0;//清中断接收标志
+ 144   2              
+ 145   2              
+ 146   2      //        SBUF = rebuf[i-1];
+ 147   2      //        while(!TI);           //等待发送数据完成
+ 148   2      //        TI=0;                 //清除发送完成标志位    
+ 149   2      //              
+ 150   2              
+ 151   2              
+ 152   2              
+ 153   2                      if (rebuf[0]!=0x5a)//帧头不对
+ 154   2                              i=0;    
+ 155   2                      if ((i==2)&&(rebuf[1]!=0x5a))//帧头不对
+ 156   2                              i=0;
+ 157   2              
+ 158   2                      if(i>3)//i等于4时，已经接收到数据量字节rebuf[3]
+ 159   2                      {
+ 160   3      
+ 161   3                              if(i!=(rebuf[3]+5))//判断是否接收一帧数据完毕
+ 162   3                                      return; 
+ 163   3                              switch(rebuf[2])//接收完毕后处理
+ 164   3                              {
+ 165   4                                      case 0x45:
+ 166   4                                              if(!Receive_ok)//当数据处理完成后才接收新的数据
+ 167   4                                              {
+ 168   5                                                      memcpy(raw_data,rebuf,15);//拷贝接收到的数据
+ 169   5                                                      Receive_ok=1;//接收完成标志
+ 170   5      
+ 171   5                              
+ 172   5                                              }
+ 173   4                                              break;
+ 174   4                                      case 0x15:
+ 175   4                          if(!Receive_ok)//当数据处理完成后才接收新的数据
+ 176   4                                              {
+ 177   5                                                      memcpy(raw_data,rebuf,9);//拷贝接收到的数据
+C51 COMPILER V9.54   MAIN                                                                  05/18/2023 12:21:11 PAGE 4   
+
+ 178   5                                                      Receive_ok=2;//接收完成标志
+ 179   5                    
+ 180   5                                              }
+ 181   4                          break;//原始数据接收，可模仿0x45的方式
+ 182   4                                      case 0x35:break;
+ 183   4                              }
+ 184   3                              i=0;//缓存清0
+ 185   3                      }
+ 186   2              
+ 187   2              }
+ 188   1      
+ 189   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    688    ----
+   CONSTANT SIZE    =     19    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     38      22
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

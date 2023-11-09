@@ -1,0 +1,2 @@
+mpu6050\mpu6050.o: ..\HARDWARE\MPU6050.c
+mpu6050\mpu6050.o: ..\HARDWARE\MPU6050.h

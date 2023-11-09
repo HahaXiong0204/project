@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\inc -I ..\..\Utilities\STM32_EVAL -I ..\..\Utilities\STM32_EVAL\STM3210C_EVAL -I ..\..\Libraries\CMSIS\CM3\CoreSupport -I ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x -I ..\src\STM32App\485 -I ..\src\STM32App\sci -I ..\src\STM32App\nvic -I ..\src\STM32App\led -I ..\src\STM32App\timer -I ..\src\STM32App\DMA -I ..\src\STM32App\RCC -I ..\src\STM32App\MBSlave -I ..\src\STM32App\ADC -I ..\src\STM32App\crc -I ..\src\STM32App\CC -I ..\src\STM32App\Displacement -I ..\src\STM32App\Calibration -I ..\src\STM32App\Flash -I ..\src\STM32App\FRDGL -I ..\src\STM32App\temperature
+-I.\RTE\_AlarmClock
+-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DUSE_STM3210C_EVAL
+-o .\obj\stm32f10x_tim.o --omf_browse .\obj\stm32f10x_tim.crf --depend .\obj\stm32f10x_tim.d "..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c"

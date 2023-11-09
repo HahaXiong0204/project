@@ -1,0 +1,1 @@
+"App\src\stc_it.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\App\24c02;.\App\iic;.\App\key;.\App\smg;.\Public;.\App\ds18b20;.\App\ds1302;.\App\ired;.\App\time;.\App\xpt2046;.\App\pwm;.\App\lcd1602) DEBUG OBJECTEXTEND PRINT(.\Obj\stc_it.lst) OBJECT(.\Obj\stc_it.obj)
